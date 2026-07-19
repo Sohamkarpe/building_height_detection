@@ -1,0 +1,34 @@
+# Building Height Detection Configuration
+# Author: Soham Ashok Karpe, M. Eng. | DIT Campus Cham
+
+features:
+  target_size: [256, 256]
+  use_hog: true
+  use_lbp: true
+  use_shadow: true
+  use_color: true
+
+model:
+  type: "random_forest"    # random_forest | svr | neural_network
+  save_dir: "models/"
+  random_forest:
+    n_estimators: 200
+    max_depth: 15
+  svr:
+    kernel: "rbf"
+    C: 10
+  neural_network:
+    hidden_layers: [256, 128, 64]
+    max_iter: 500
+
+data:
+  images_dir: "data/images/"
+  labels_csv: "data/labels.csv"
+  test_split: 0.2
+
+output:
+  results_dir: "results/"
+  save_plots: true
+
+logging:
+  level: "INFO"
